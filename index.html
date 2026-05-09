@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SD Boys Trip · Oct 15–18</title>
+<meta name="description" content="San Diego boys trip planning — flights, Airbnb, food, bars, and itinerary for 12 guys.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,400&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1410;
+  --paper: #f5ede0;
+  --paper-warm: #ebdfc9;
+  --sun: #e8741a;
+  --sunset: #c63d1f;
+  --sky: #2d5564;
+  --terracotta: #b8551e;
+  --olive: #5d6135;
+  --cream: #f9f3e6;
+  --line: rgba(26, 20, 16, 0.15);
+  --shadow: rgba(26, 20, 16, 0.08);
+  --nav-h: 52px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: 'Manrope', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+  font-weight: 400;
+  font-size: 15px;
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(232, 116, 26, 0.07), transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(45, 85, 100, 0.05), transparent 50%);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  z-index: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100' height='100' filter='url(%23n)' opacity='0.4'/></svg>");
+  mix-blend-mode: multiply;
+}
+
+.serif { font-family: 'Fraunces', serif; }
+.mono  { font-family: 'JetBrains Mono', monospace; }
+
+/* ── NAV ── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--ink);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 20px;
+  height: var(--nav-h);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.nav::-webkit-scrollbar { display: none; }
+
+.nav-brand {
+  font-family: 'Fraunces', serif;
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+  letter-spacing: -0.02em;
+  padding-right: 16px;
+  margin-right: 8px;
+  border-right: 1px solid rgba(245,237,224,0.2);
+  flex-shrink: 0;
+}
+
+.nav a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(245,237,224,0.65);
+  text-decoration: none;
+  padding: 6px 10px;
+  white-space: nowrap;
+  transition: color 0.15s;
+  flex-shrink: 0;
+}
+.nav a:hover { color: var(--sun); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  padding: 32px 28px 28px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+}
+
+.hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+.hero-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: clamp(60px, 18vw, 220px);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  margin: 48px 0;
+  font-variation-settings: "opsz" 144;
+}
+
+.hero-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--sunset);
+  font-variation-settings: "opsz" 144;
+}
+
+.hero-meta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 16px;
+  border-top: 2px solid var(--ink);
+  padding-top: 24px;
+}
+
+.hero-meta-item .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.5;
+  margin-bottom: 6px;
+}
+
+.hero-meta-item .value {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+@media (min-width: 700px) {
+  .hero-meta { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ── SECTIONS ── */
+section {
+  padding: 88px 28px;
+  position: relative;
+  z-index: 2;
+}
+
+section:nth-child(even) {
+  background: rgba(26, 20, 16, 0.025);
+}
+
+.section-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: clamp(38px, 8vw, 72px);
+  line-height: 0.93;
+  letter-spacing: -0.025em;
+  margin-bottom: 32px;
+  font-variation-settings: "opsz" 144;
+}
+
+.section-title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--sunset);
+}
+
+.lead {
+  font-family: 'Fraunces', serif;
+  font-size: 19px;
+  line-height: 1.55;
+  font-weight: 400;
+  margin-bottom: 36px;
+  max-width: 660px;
+  font-variation-settings: "opsz" 32;
+  color: rgba(26, 20, 16, 0.85);
+}
+
+p { margin-bottom: 12px; }
+
+/* ── FLIGHTS ── */
+.compare {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+@media (min-width: 700px) {
+  .compare { grid-template-columns: 1fr 1fr; }
+}
+
+.flight-card {
+  background: var(--cream);
+  border: 1.5px solid var(--ink);
+  padding: 28px 24px;
+  position: relative;
+  box-shadow: 5px 5px 0 var(--ink);
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+
+.flight-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--ink);
+}
+
+.flight-card.featured {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.flight-card.featured .flight-tag  { color: var(--sun); }
+.flight-card.featured .flight-row  { border-color: rgba(245,237,224,0.12); }
+
+.flight-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--sunset);
+  margin-bottom: 8px;
+}
+
+.flight-name {
+  font-family: 'Fraunces', serif;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 4px;
+  letter-spacing: -0.02em;
+}
+
+.flight-route {
+  font-size: 13px;
+  opacity: 0.65;
+  margin-bottom: 20px;
+}
+
+.flight-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+  gap: 8px;
+}
+
+.flight-row:last-of-type { border-bottom: none; }
+.flight-row .k { opacity: 0.6; }
+.flight-row .v { font-weight: 600; font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+
+.flight-price {
+  font-family: 'Fraunces', serif;
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1;
+  margin-top: 20px;
+  letter-spacing: -0.03em;
+}
+
+.flight-price small {
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 0.6;
+  font-family: 'Manrope', sans-serif;
+  letter-spacing: 0;
+}
+
+.flight-subtotal {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 500;
+  opacity: 0.6;
+  margin-top: 4px;
+  letter-spacing: -0.02em;
+}
+
+/* ── CALLOUT ── */
+.callout {
+  background: var(--sun);
+  color: var(--ink);
+  padding: 26px 28px;
+  border: 1.5px solid var(--ink);
+  margin: 32px 0;
+  position: relative;
+}
+
+.callout::before {
+  content: '※';
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  font-size: 22px;
+  font-family: 'Fraunces', serif;
+  opacity: 0.5;
+}
+
+.callout h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+
+.callout p { font-size: 15px; line-height: 1.55; }
+
+/* ── AIRBNB GRID ── */
+.bnb-grid {
+  display: grid;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+@media (min-width: 700px) {
+  .bnb-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.bnb {
+  background: var(--cream);
+  border: 1.5px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+
+.bnb:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.bnb-header {
+  padding: 20px 22px 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.bnb-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-bottom: 6px;
+}
+
+.bnb h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 6px;
+}
+
+.bnb-area {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 3px 8px;
+}
+
+/* Spec grid */
+.bnb-specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.bnb-spec {
+  padding: 12px 16px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.bnb-spec:nth-child(even) { border-right: none; }
+.bnb-spec:nth-last-child(-n+2) { border-bottom: none; }
+
+.bnb-spec .spec-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.5;
+  margin-bottom: 4px;
+}
+
+.bnb-spec .spec-value {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.bnb-spec .spec-value small {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  opacity: 0.65;
+  letter-spacing: 0;
+}
+
+/* Feature tags */
+.bnb-features {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.feat-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 4px 8px;
+  background: var(--paper-warm);
+  border: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+.bnb-footer {
+  padding: 16px 22px;
+  margin-top: auto;
+}
+
+.bnb a.bnb-btn {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--paper);
+  background: var(--ink);
+  padding: 12px 16px;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.15s;
+}
+
+.bnb a.bnb-btn:hover { background: var(--sunset); }
+
+.bnb-note {
+  font-size: 12px;
+  opacity: 0.6;
+  margin-top: 8px;
+  font-style: italic;
+  text-align: center;
+}
+
+/* ── ITINERARY ── */
+.day {
+  border-top: 2px solid var(--ink);
+  padding-top: 36px;
+  margin-bottom: 72px;
+}
+
+.day-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.day-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 6px 12px;
+  letter-spacing: 0.15em;
+  flex-shrink: 0;
+}
+
+.day-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: clamp(32px, 6vw, 52px);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+}
+
+.day-title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--sunset);
+}
+
+.day-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  opacity: 0.55;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.slot { margin-bottom: 40px; }
+
+.slot-label {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--sunset);
+  padding-bottom: 4px;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.options { display: grid; gap: 12px; }
+
+.option {
+  background: var(--cream);
+  border-left: 3px solid var(--sunset);
+  padding: 18px 20px;
+  position: relative;
+}
+
+.option-letter {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 26px;
+  font-weight: 300;
+  opacity: 0.3;
+}
+
+.option h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin-bottom: 3px;
+  padding-right: 36px;
+}
+
+.option .where {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-bottom: 10px;
+}
+
+.option p { font-size: 14px; line-height: 1.6; }
+
+.option .price-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 3px 8px;
+  margin-top: 10px;
+}
+
+.pick {
+  background: var(--cream);
+  border: 1.5px solid var(--ink);
+  padding: 22px 24px;
+  margin-bottom: 14px;
+}
+
+.pick h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 3px;
+}
+
+.pick .where {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-bottom: 12px;
+}
+
+.pick p { font-size: 14px; line-height: 1.6; }
+
+/* ── BUDGET ── */
+.budget {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 32px 24px;
+  margin: 28px 0;
+}
+
+.budget-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 16px;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(245,237,224,0.1);
+  align-items: baseline;
+}
+
+.budget-row.head {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  border-bottom: 1px solid rgba(245,237,224,0.25);
+}
+
+.budget-row.total {
+  border-top: 2px solid var(--paper);
+  border-bottom: none;
+  margin-top: 10px;
+  padding-top: 20px;
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.budget-row .item { font-size: 14px; line-height: 1.4; }
+.budget-row .col  { font-family: 'JetBrains Mono', monospace; font-size: 13px; text-align: right; white-space: nowrap; }
+
+/* ── DIVIDER ── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 52px 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.45;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--ink);
+  opacity: 0.25;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 72px 28px;
+  text-align: center;
+}
+
+footer .tagline {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(28px, 6vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  max-width: 720px;
+  margin: 0 auto 28px;
+}
+
+footer .tagline em {
+  color: var(--sun);
+  font-style: normal;
+  font-weight: 700;
+}
+
+footer .meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.45;
+}
+
+.anchor { scroll-margin-top: calc(var(--nav-h) + 8px); }
+
+@media (max-width: 600px) {
+  section { padding: 60px 20px; }
+  .hero   { padding: 20px; }
+  .budget-row { grid-template-columns: 1fr; gap: 4px; }
+  .budget-row .col { text-align: left; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <span class="nav-brand">SD · Oct 15–18</span>
+  <a href="#flights">01 Flights</a>
+  <a href="#airbnb">02 Airbnb</a>
+  <a href="#day1">03 Thu</a>
+  <a href="#day2">Fri</a>
+  <a href="#day3">Sat</a>
+  <a href="#day4">Sun</a>
+  <a href="#budget">04 Budget</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-top">
+    <span>San Diego · CA</span>
+    <span>12 GUYS · 4 DAYS</span>
+  </div>
+
+  <h1 class="hero-title">
+    Boys<br>
+    Trip<br>
+    <em>San Diego</em>
+  </h1>
+
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <div class="label">Dates</div>
+      <div class="value">Oct 15<br>– 18</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="label">From</div>
+      <div class="value">YVR<br>Vancouver</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="label">To</div>
+      <div class="value">SAN<br>San Diego</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="label">Crew</div>
+      <div class="value">12<br>guys</div>
+    </div>
+  </div>
+</header>
+
+<!-- FLIGHTS -->
+<section id="flights" class="anchor">
+  <div class="section-num">01 · Getting There</div>
+  <h2 class="section-title">Flights, <em>compared</em>.</h2>
+  <p class="lead">Two viable options. Connecting saves ~$320 per person; direct saves ~5 hours each way and gets you in by noon. All prices in CAD, round-trip.</p>
+
+  <div class="compare">
+    <div class="flight-card">
+      <div class="flight-tag">Option A · Cheap</div>
+      <h3 class="flight-name">WestJet</h3>
+      <div class="flight-route">YVR → YYC → SAN (connecting)</div>
+      <div class="flight-row"><span class="k">Travel time</span><span class="v">~8 hrs</span></div>
+      <div class="flight-row"><span class="k">Departs YVR</span><span class="v">6:00 AM</span></div>
+      <div class="flight-row"><span class="k">Arrives SAN</span><span class="v">2:10 PM</span></div>
+      <div class="flight-row"><span class="k">Carry-on</span><span class="v">extra ($)</span></div>
+      <div class="flight-row"><span class="k">Refundable</span><span class="v">No</span></div>
+      <div class="flight-price">$535<small> /person · CAD</small></div>
+      <div class="flight-subtotal">$6,420 <small>/ group of 12</small></div>
+    </div>
+
+    <div class="flight-card featured">
+      <div class="flight-tag">Option B · Direct</div>
+      <h3 class="flight-name">Air Canada</h3>
+      <div class="flight-route">YVR → SAN nonstop</div>
+      <div class="flight-row"><span class="k">Travel time</span><span class="v">2h 57m</span></div>
+      <div class="flight-row"><span class="k">Departs YVR</span><span class="v">8:50 AM</span></div>
+      <div class="flight-row"><span class="k">Arrives SAN</span><span class="v">11:47 AM</span></div>
+      <div class="flight-row"><span class="k">Carry-on</span><span class="v">included</span></div>
+      <div class="flight-row"><span class="k">Refundable</span><span class="v">Changeable</span></div>
+      <div class="flight-price">$855<small> /person · CAD</small></div>
+      <div class="flight-subtotal" style="opacity:0.65">$10,260 <small>/ group of 12</small></div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <h4>Should we wait to book?</h4>
+    <p><strong>WestJet:</strong> Currently near floor pricing. Typical range $480–680 CAD. Won't drop further; risk is losing 12 seats together. <strong>Book by mid-July.</strong></p>
+    <p style="margin-top: 8px;"><strong>Air Canada Direct:</strong> Only 4 seats showing at this fare bucket — the other 8 will price up. Nonstop transborder rarely drops. <strong>Book ASAP if going direct.</strong></p>
+  </div>
+</section>
+
+<!-- AIRBNB -->
+<section id="airbnb" class="anchor">
+  <div class="section-num">02 · Where We Stay</div>
+  <h2 class="section-title">The <em>Airbnbs</em>.</h2>
+  <p class="lead">Three options from the shortlist. Aim for Pacific Beach or Mission Beach — walking distance to bars beats commuting every time.</p>
+
+  <div class="bnb-grid">
+
+    <!-- Listing 1 -->
+    <div class="bnb">
+      <div class="bnb-header">
+        <div class="bnb-num">Option 01</div>
+        <h4>Pacific Beach House</h4>
+        <span class="bnb-area">📍 Pacific Beach</span>
+      </div>
+      <div class="bnb-specs">
+        <div class="bnb-spec">
+          <div class="spec-label">Price</div>
+          <div class="spec-value">TBD<small> /night</small></div>
+        </div>
+        <div class="bnb-spec">
+          <div class="spec-label">Sleeps</div>
+          <div class="spec-value">12<small> guests</small></div>
+        </div>
+        <div class="bnb-spec">
+          <div class="spec-label">Bedrooms</div>
+          <div class="spec-value">—</div>
+        </div>
+        <div class="bnb-spec">
+          <div class="spec-label">Bathrooms</div>
+          <div class="spec-value">—</div>
+        </div>
+      </div>
+      <div class="bnb-features">
+        <span class="feat-tag">Check listing for features</span>
+      </div>
+      <div class="bnb-footer">
+        <a class="bnb-btn" href="https://www.airbnb.com/rooms/655033292489622489?unique_share_id=55740926-d32d-43e4-b9e3-c313ca941997&viralityEntryPoint=1&s=76" target="_blank" rel="noopener">View on Airbnb →</a>
+        <p class="bnb-note">Verify price, beds &amp; amenities on listing</p>
+      </div>
+    </div>
+
+    <!-- Listing 2 — confirmed details -->
+    <div class="bnb">
+      <div class="bnb-header">
+        <div class="bnb-num">Option 02</div>
+        <h4>Beachside Retreat</h4>
+        <span class="bnb-area">📍 Pacific Beach · 1 min to beach</span>
+      </div>
+      <div class="bnb-specs">
+        <div class="bnb-spec">
+          <div class="spec-label">Price</div>
+          <div class="spec-value">TBD<small> /night</small></div>
+        </div>
+        <div class="bnb-spec">
+          <div class="spec-label">Sleeps</div>
+          <div class="spec-value">12<small> guests</small></div>
+        </div>
+        <div class="bnb-spec">
+          <div class="spec-label">Bedrooms</div>
+          <div class="spec-value">4</div>
+        </div>
+        <div class="bnb-spec">
+          <div class="spec-label">Style</div>
+          <div class="spec-value" style="font-size:13px">Beach<small> cottage</small></div>
+        </div>
+      </div>
+      <div class="bnb-features">
+        <span class="feat-tag">🔥 Fire</span>
+        <span class="feat-tag">🌿 Fenced yard</span>
+        <span class="feat-tag">🏖 1 min to beach</span>
+        <span class="feat-tag">🍹 Near Garnet Ave</span>
+        <span class="feat-tag">✨ Newly remodelled</span>
+      </div>
+      <div class="bnb-footer">
+        <a class="bnb-btn" href="https://www.airbnb.com/rooms/48927380?unique_share_id=8d35c2f4-83a0-41ee-a31b-414f8c48b041&viralityEntryPoint=1&s=76" target="_blank" rel="noopener">View on Airbnb →</a>
+        <p class="bnb-note">Confirm Oct 15–18 total price on listing</p>
+      </div>
+    </div>
+
+    <!-- Listing 3 -->
+    <div class="bnb">
+      <div class="bnb-header">
+        <div class="bnb-num">Option 03</div>
+        <h4>San Diego Beach House</h4>
+        <span class="bnb-area">📍 San Diego</span>
+      </div>
+      <div class="bnb-specs">
+        <div class="bnb-spec">
+          <div class="spec-label">Price</div>
+          <div class="spec-value">TBD<small> /night</small></div>
+        </div>
+        <div class="bnb-spec">
+          <div class="spec-label">Sleeps</div>
+          <div class="spec-value">12<small> guests</small></div>
+        </div>
+        <div class="bnb-spec">
+          <div class="spec-label">Bedrooms</div>
+          <div class="spec-value">—</div>
+        </div>
+        <div class="bnb-spec">
+          <div class="spec-label">Bathrooms</div>
+          <div class="spec-value">—</div>
+        </div>
+      </div>
+      <div class="bnb-features">
+        <span class="feat-tag">Check listing for features</span>
+      </div>
+      <div class="bnb-footer">
+        <a class="bnb-btn" href="https://www.airbnb.com/rooms/1538684793721325394?unique_share_id=0915a000-c812-4be0-9f26-f2357f6d401c&viralityEntryPoint=1&s=76" target="_blank" rel="noopener">View on Airbnb →</a>
+        <p class="bnb-note">Verify price, beds &amp; amenities on listing</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="callout">
+    <h4>What to verify on each listing</h4>
+    <p>Sleeps 12 minimum · Pacific Beach or Mission Beach location · Total price for Oct 15–18 (incl. all fees) · Cancellation policy · Reviews mentioning groups/noise · Ideally a hot tub and outdoor space.</p>
+  </div>
+</section>
+
+<!-- ITINERARY -->
+<section id="day1" class="anchor">
+  <div class="section-num">03 · The Itinerary</div>
+  <h2 class="section-title"><em>Day-by-day</em>, hour-by-hour.</h2>
+  <p class="lead">Each meal and night has 2–3 options so the group can vote on the day. Everything is Uber-friendly.</p>
+
+  <!-- DAY 1 -->
+  <div class="day">
+    <div class="day-header">
+      <span class="day-num">DAY 01</span>
+      <h3 class="day-title">Land &amp; <em>attack</em></h3>
+      <span class="day-date">Thurs · Oct 15</span>
+    </div>
+
+    <div class="slot">
+      <span class="slot-label">Lunch · on arrival</span>
+      <div class="pick">
+        <h4>Tacos El Gordo</h4>
+        <div class="where">Downtown · 511 F St</div>
+        <p>Tijuana-style, multiple meat stations, chaotic and perfect. The adobada (spicy pork) is the move. Order 4–5 each. <span class="price-tag">~$7 CAD/taco</span></p>
+      </div>
+    </div>
+
+    <div class="slot">
+      <span class="slot-label">Afternoon · pick one</span>
+      <div class="options">
+        <div class="option">
+          <span class="option-letter">A</span>
+          <h4>Balboa Park stroll</h4>
+          <div class="where">Free · 15 min Uber from Gaslamp</div>
+          <p>Walk it off, hit a craft brewery on the way back, nap before the big night.</p>
+        </div>
+        <div class="option">
+          <span class="option-letter">B</span>
+          <h4>Early Gaslamp crawl</h4>
+          <div class="where">Gaslamp Quarter</div>
+          <p>Start the bar crawl at 4 PM — patios are open, places aren't packed yet, easy to grab a section for 12.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="slot">
+      <span class="slot-label">Dinner</span>
+      <div class="pick">
+        <h4>La Puerta</h4>
+        <div class="where">Gaslamp · 560 Fourth Ave · open until 1 AM</div>
+        <p>Mexican bar-restaurant. 4.5 stars, 5,000+ reviews. Bold cocktails, packed patio, happy hour deals. Doubles as your first bar of the night. <span class="price-tag">~$25 CAD pp</span></p>
+      </div>
+    </div>
+
+    <div class="slot">
+      <span class="slot-label">Night · pick one</span>
+      <div class="options">
+        <div class="option">
+          <span class="option-letter">A</span>
+          <h4>Side Bar + Oxford</h4>
+          <div class="where">Gaslamp · upscale clubbing</div>
+          <p>Boutique nightclub, stylish crowd, DJs spin house/hip-hop/top-40. Bottle service worth it for 12. Then late-round at Oxford Social Club under the Pendry.</p>
+          <span class="price-tag">$120–180 CAD pp</span>
+        </div>
+        <div class="option">
+          <span class="option-letter">B</span>
+          <h4>Parq Nightclub</h4>
+          <div class="where">Gaslamp · mega-club energy</div>
+          <p>Big-name DJs, massive LED displays, booming sound. Best for hard-going group nights. Get a table for 12.</p>
+          <span class="price-tag">$100–160 CAD pp</span>
+        </div>
+        <div class="option">
+          <span class="option-letter">C</span>
+          <h4>Pacers Showgirls</h4>
+          <div class="where">Midway · 3334 Midway Dr · ~$20 Uber</div>
+          <p>SD's #1 rated gentlemen's club. Full kitchen, champagne room. Free entry before 7 PM. Call ahead for a section.</p>
+          <span class="price-tag">$150–250 CAD pp</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day" id="day2">
+    <div class="day-header">
+      <span class="day-num">DAY 02</span>
+      <h3 class="day-title"><em>Beach</em> day</h3>
+      <span class="day-date">Fri · Oct 16</span>
+    </div>
+
+    <div class="slot">
+      <span class="slot-label">Breakfast · pick one</span>
+      <div class="options">
+        <div class="option">
+          <span class="option-letter">A</span>
+          <h4>Kono's Cafe</h4>
+          <div class="where">PB · foot of Crystal Pier</div>
+          <p>Line wraps the boardwalk but moves fast. Breakfast burritos = local legend.</p>
+          <span class="price-tag">~$18 CAD pp</span>
+        </div>
+        <div class="option">
+          <span class="option-letter">B</span>
+          <h4>Broken Yolk Cafe</h4>
+          <div class="where">PB · Mission Blvd · since 1979</div>
+          <p>Massive omelets, pancake stacks, mimosa flights. Has private dining for groups — book it.</p>
+          <span class="price-tag">~$28 CAD pp w/ drinks</span>
+        </div>
+        <div class="option">
+          <span class="option-letter">C</span>
+          <h4>Madi PB</h4>
+          <div class="where">PB · voted Best Brunch SD</div>
+          <p>Coconut pancakes, the G.O.A.T. breakfast sandwich, creative mimosa flavours. Reservations required.</p>
+          <span class="price-tag">~$32 CAD pp</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="slot">
+      <span class="slot-label">Day · beach</span>
+      <div class="pick">
+        <h4>South Mission Beach + Boardwalk</h4>
+        <div class="where">Free · volleyball courts · 3-mile boardwalk</div>
+        <p>Volleyball courts, bonfires allowed, room for 12. Rent bikes (~$25 CAD/hr) and cruise the boardwalk. Hit Belmont Park's Giant Dipper roller coaster (~$15 CAD) if you're feeling it. Cooler, sunscreen, towels — that's it.</p>
+      </div>
+      <div class="pick" style="background: var(--paper-warm);">
+        <h4>Lahaina Beach House</h4>
+        <div class="where">PB beachfront · opens 9 AM</div>
+        <p>Beach bar with the best sunset patio in PB. Drink there, return after dinner. <span class="price-tag">~$14 CAD/beer</span></p>
+      </div>
+    </div>
+
+    <div class="slot">
+      <span class="slot-label">Lunch</span>
+      <div class="pick">
+        <h4>The Taco Stand</h4>
+        <div class="where">B St (downtown) or PB</div>
+        <p>Carne asada fries are legendary. Al pastor taco is a must. Quick service, good for a group on the move. <span class="price-tag">~$20 CAD pp</span></p>
+      </div>
+    </div>
+
+    <div class="slot">
+      <span class="slot-label">Night · PB bar crawl</span>
+      <div class="pick">
+        <h4>Lahaina → PB Shore Club → 710 Beach Club</h4>
+        <div class="where">All walkable · no Uber needed between</div>
+        <p>Sunset drinks at Lahaina (5 PM) → walk to <strong>PB Shore Club</strong> (beachfront, big outdoor screens, open till 2) → end at <strong>710 Beach Club</strong> (live music, karaoke, sports bar). PB skews younger and more casual than Gaslamp — easier to hang out at the bar, easier to meet people. <span class="price-tag">$100–150 CAD pp</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day" id="day3">
+    <div class="day-header">
+      <span class="day-num">DAY 03</span>
+      <h3 class="day-title">Saturday <em>blowout</em></h3>
+      <span class="day-date">Sat · Oct 17</span>
+    </div>
+
+    <div class="slot">
+      <span class="slot-label">Breakfast</span>
+      <div class="pick">
+        <h4>Fig Tree Cafe</h4>
+        <div class="where">PB · garden patio · opens 8 AM</div>
+        <p>Local favourite. Fig Jam &amp; Ricotta French Toast, Italian Fennel Sausage Omelet. Go early — waitlist on weekends. <span class="price-tag">~$25 CAD pp</span></p>
+      </div>
+    </div>
+
+    <div class="slot">
+      <span class="slot-label">Day · pick one</span>
+      <div class="options">
+        <div class="option">
+          <span class="option-letter">A</span>
+          <h4>Escape Room Showdown</h4>
+          <div class="where">The Escape Game · Gaslamp · 5.0 stars</div>
+          <p>Split into two teams of 6. Race each other through different rooms. Losers buy round one tonight. Book in advance.</p>
+          <span class="price-tag">$60 CAD pp</span>
+        </div>
+        <div class="option">
+          <span class="option-letter">B</span>
+          <h4>Brewery Tour</h4>
+          <div class="where">Ballast Point · Stone Brewing</div>
+          <p>SD is the craft beer capital of the US. Tasting flight tour, easy Uber.</p>
+          <span class="price-tag">$30 CAD pp</span>
+        </div>
+        <div class="option">
+          <span class="option-letter">C</span>
+          <h4>Mission Bay boats / jet skis</h4>
+          <div class="where">Mission Bay · 2–3 hr rental</div>
+          <p>Pontoon boat for the chillers, jet skis for the wild ones. Split across a couple of rentals.</p>
+          <span class="price-tag">$100 CAD pp</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="slot">
+      <span class="slot-label">Lunch</span>
+      <div class="pick">
+        <h4>The Waves Taco Club</h4>
+        <div class="where">Gaslamp · 916 Fifth Ave · 4.8 stars</div>
+        <p>Chipotle shrimp taco, battered white fish. No massive lineup like El Gordo. <span class="price-tag">~$22 CAD pp</span></p>
+      </div>
+    </div>
+
+    <div class="slot">
+      <span class="slot-label">Dinner</span>
+      <div class="pick">
+        <h4>Puesto</h4>
+        <div class="where">Little Italy or Gaslamp · upscale modern Mexican</div>
+        <p>Legendary crispy tacos, great cocktails, buzzing Saturday atmosphere. Sets up the big night right. <span class="price-tag">~$50 CAD pp</span></p>
+      </div>
+    </div>
+
+    <div class="slot">
+      <span class="slot-label">Night · pick one</span>
+      <div class="options">
+        <div class="option">
+          <span class="option-letter">A</span>
+          <h4>Full Gaslamp Saturday</h4>
+          <div class="where">Altitude Sky Lounge → Side Bar / Parq</div>
+          <p>Pre-drinks at Altitude (rooftop, panoramic views) → main event at Side Bar or Parq. Saturday in Gaslamp is the night to be out.</p>
+          <span class="price-tag">$150–200 CAD pp</span>
+        </div>
+        <div class="option">
+          <span class="option-letter">B</span>
+          <h4>Pacers + Gaslamp</h4>
+          <div class="where">Strip club night, then keep going</div>
+          <p>Pacers with bottle service section booked for 12 → Uber to Gaslamp to keep the night alive.</p>
+          <span class="price-tag">$200–280 CAD pp</span>
+        </div>
+        <div class="option">
+          <span class="option-letter">C</span>
+          <h4>Karaoke + Bar Hop</h4>
+          <div class="where">Gaslamplighter · 536 Market St</div>
+          <p>Private karaoke rooms, premium sound, cocktail vibe. Book a room for 12. Bar hop Gaslamp after.</p>
+          <span class="price-tag">$120–160 CAD pp</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="day" id="day4">
+    <div class="day-header">
+      <span class="day-num">DAY 04</span>
+      <h3 class="day-title"><em>Send-off</em></h3>
+      <span class="day-date">Sun · Oct 18</span>
+    </div>
+
+    <div class="slot">
+      <span class="slot-label">Hangover Brunch</span>
+      <div class="pick">
+        <h4>Crushed PB</h4>
+        <div class="where">Pacific Beach · the mimosa place</div>
+        <p>Mimosa flights, apple pie pancakes, "Daddycakes" for the savory people. The perfect last meal. <span class="price-tag">~$30 CAD pp</span></p>
+      </div>
+      <div class="pick" style="background: var(--paper-warm);">
+        <h4>Then: Uber to SAN</h4>
+        <div class="where">15–20 min from PB · ~$40 CAD per car</div>
+        <p>Be at SAN by 2 PM for either flight. Book Ubers in advance — surge pricing on Sundays is real.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUDGET -->
+<section id="budget" class="anchor">
+  <div class="section-num">04 · The Damage</div>
+  <h2 class="section-title">Total <em>budget</em>, per person.</h2>
+  <p class="lead">All-in estimate in CAD. Includes flights, lodging, food, drinks, activities, and Ubers. Excludes shopping or "incidentals."</p>
+
+  <div class="budget">
+    <div class="budget-row head">
+      <div class="item">Item</div>
+      <div class="col">WestJet</div>
+      <div class="col">AC Direct</div>
+    </div>
+    <div class="budget-row">
+      <div class="item">Flights (round trip)</div>
+      <div class="col">$535</div>
+      <div class="col">$855</div>
+    </div>
+    <div class="budget-row">
+      <div class="item">Airbnb (3 nights, ÷12)</div>
+      <div class="col">$200–280</div>
+      <div class="col">$200–280</div>
+    </div>
+    <div class="budget-row">
+      <div class="item">Food (3 days)</div>
+      <div class="col">$300–400</div>
+      <div class="col">$300–400</div>
+    </div>
+    <div class="budget-row">
+      <div class="item">Bars &amp; drinks</div>
+      <div class="col">$300–450</div>
+      <div class="col">$300–450</div>
+    </div>
+    <div class="budget-row">
+      <div class="item">Activities</div>
+      <div class="col">$80–150</div>
+      <div class="col">$80–150</div>
+    </div>
+    <div class="budget-row">
+      <div class="item">Ubers (whole trip)</div>
+      <div class="col">$80–120</div>
+      <div class="col">$80–120</div>
+    </div>
+    <div class="budget-row">
+      <div class="item">Strip club (optional)</div>
+      <div class="col">$150–250</div>
+      <div class="col">$150–250</div>
+    </div>
+    <div class="budget-row total">
+      <div class="item">All-in per person</div>
+      <div class="col">$1,645–2,185</div>
+      <div class="col">$1,965–2,505</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <h4>The bottom line</h4>
+    <p>Budget around <strong>$2,000 CAD per person</strong> for a comfortable trip. The strip club night and an extra splurge meal could push it to $2,300+. Doable on $1,650 if everyone's careful, flies WestJet, and skips the gentlemen's club.</p>
+  </div>
+</section>
+
+<footer>
+  <p class="tagline">Get there. <em>Eat tacos.</em> Go home tan.</p>
+  <p class="meta">SD · Oct 15–18 · 12 Guys</p>
+</footer>
+
+</body>
+</html>
