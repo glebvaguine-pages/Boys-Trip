@@ -136,7 +136,7 @@ p { margin-bottom: 10px; }
   text-transform: uppercase; opacity: 0.55; margin-bottom: 8px;
 }
 .option p { font-size: 14px; line-height: 1.5; }
-.option .price-tag {
+.option .price-tag, .pick .price-tag {
   display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 12px;
   font-weight: 700; background: var(--ink); color: var(--paper); padding: 3px 8px; margin-top: 8px;
 }
@@ -178,6 +178,17 @@ footer .meta {
   text-transform: uppercase; opacity: 0.5;
 }
 .anchor { scroll-margin-top: 24px; }
+:root { --evan: #1f6f78; }
+.evan-badge {
+  display: inline-flex; align-items: center; gap: 5px; font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  background: var(--evan); color: var(--cream); padding: 4px 8px; margin-bottom: 10px;
+}
+.pick.evan { border: 1.5px solid var(--evan); box-shadow: 5px 5px 0 var(--evan); }
+.evan-legend {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 13px;
+  margin: -8px 0 28px; opacity: 0.85;
+}
 @media (max-width: 600px) { section { padding: 48px 20px; } .hero { padding: 20px; } }
 </style>
 </head>
@@ -250,6 +261,7 @@ footer .meta {
   <div class="section-num">03 · The Itinerary</div>
   <h2 class="section-title"><em>Day-by-day</em>.</h2>
   <p class="lead">Options to vote on where it matters. Everything's Uber-friendly.</p>
+  <div class="evan-legend"><span class="evan-badge" style="margin-bottom:0;">★ Evan's List</span><span>= a local rec from Evan, worked into the plan</span></div>
 
   <div class="day">
     <div class="day-header">
@@ -340,11 +352,22 @@ footer .meta {
     </div>
 
     <div class="slot">
-      <span class="slot-label">Night · PB bar crawl</span>
+      <span class="slot-label">5:45 PM · sunset</span>
+      <div class="pick evan">
+        <span class="evan-badge">★ Evan's List</span>
+        <h4>Sunset Cliffs</h4>
+        <div class="where">Ocean Beach / Point Loma · ~20 min Uber from the house</div>
+        <p>Walk the clifftop trail for golden hour — sun drops around 6:20 PM in mid-October. The best free view in the city, and a proper reset between the beach and the night out. Bring a few cold ones, then Uber ~15 min to PB for the crawl.</p>
+        <span class="price-tag">Free</span>
+      </div>
+    </div>
+
+    <div class="slot">
+      <span class="slot-label">7:00 PM · PB bar crawl</span>
       <div class="pick">
-        <h4>Lahaina → PB Shore Club → 710 Beach Club</h4>
-        <div class="where">Walkable once in PB · ~10–15 min Uber from the house</div>
-        <p>Sunset drinks → PB Shore Club (beachfront, open till 2) → 710 Beach Club (live music, karaoke). Book return Ubers as a group around 1 AM. <span class="price-tag">$100–150 CAD pp</span></p>
+        <h4>PB Shore Club → 710 Beach Club</h4>
+        <div class="where">Walkable once in PB · ~15 min Uber from Sunset Cliffs</div>
+        <p>Dinner + drinks at PB Shore Club (beachfront, open till 2) → 710 Beach Club (live music, karaoke). Skipping the cliffs? Start with sunset at Lahaina instead. Book return Ubers as a group around 1 AM. <span class="price-tag">$100–150 CAD pp</span></p>
       </div>
     </div>
   </div>
@@ -460,10 +483,22 @@ footer .meta {
     </div>
 
     <div class="slot">
+      <span class="slot-label">11:00 AM · last hour on the water</span>
+      <div class="pick evan">
+        <span class="evan-badge">★ Evan's List</span>
+        <h4>Paddle boarding on Mission Bay</h4>
+        <div class="where">Mission Bay · ~5 min from Crushed PB</div>
+        <p>Flat, calm water — zero skill needed, ideal after Saturday night. Rental shacks along the bay rent boards by the hour; with 13, call ahead or split into two waves. Back on land by 12:30.</p>
+        <span class="price-tag">~$40–60 CAD pp</span>
+      </div>
+      <p style="font-size: 13px; opacity: 0.65; margin-top: 8px;">Check the Airbnb checkout time — if it's before noon, pack up before brunch and bring bags along (or have one person stay back with them).</p>
+    </div>
+
+    <div class="slot">
       <span class="slot-label">1:45 PM · Uber to SAN</span>
       <div class="pick" style="background: var(--paper-warm);">
         <h4>Head to the airport together</h4>
-        <div class="where">~20 min from the house · flight 4:50 PM</div>
+        <div class="where">~20 min from the house, ~15 min from Mission Bay · flight 4:50 PM</div>
         <p>Aim for SAN by 3:00 PM. Book Ubers ahead — Sunday surge pricing is real for a group of 13.</p>
       </div>
     </div>
@@ -484,13 +519,14 @@ footer .meta {
     <div class="budget-row"><div class="item">Surf lesson</div><div class="col">$130–175</div></div>
     <div class="budget-row"><div class="item">SDSU game (ticket + tailgate + trolley)</div><div class="col">$90–150</div></div>
     <div class="budget-row"><div class="item">Ubers (whole trip)</div><div class="col">$100–150</div></div>
+    <div class="budget-row"><div class="item">★ Mission Bay paddle boards</div><div class="col">$40–60</div></div>
     <div class="budget-row"><div class="item">Strip club (optional)</div><div class="col">$150–250</div></div>
-    <div class="budget-row total"><div class="item">Ground cost per person</div><div class="col">$1,235–1,805</div></div>
+    <div class="budget-row total"><div class="item">Ground cost per person</div><div class="col">$1,275–1,865</div></div>
   </div>
 
   <div class="callout">
     <h4>Bottom line</h4>
-    <p>Budget <strong>$1,235–1,805 CAD per person</strong> on the ground, plus your flight. REVELxp tailgate and the strip club push toward the top — DIY the tailgate and skip it to land near $1,235.</p>
+    <p>Budget <strong>$1,275–1,865 CAD per person</strong> on the ground, plus your flight. REVELxp tailgate and the strip club push toward the top — DIY the tailgate and skip it to land near $1,275.</p>
   </div>
 </section>
 
