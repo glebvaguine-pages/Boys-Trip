@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SD Boys Trip · Vote Results</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300&family=JetBrains+Mono:wght@400;700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1410; --paper: #f5ede0; --cream: #f9f3e6; --sunset: #c63d1f;
+  --line: rgba(26, 20, 16, 0.15);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Manrope', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.5; }
+main { max-width: 760px; margin: 0 auto; padding: 40px 20px 64px; }
+.back { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); opacity: 0.6; }
+h1 { font-family: 'Fraunces', serif; font-weight: 900; font-size: clamp(40px, 10vw, 72px); line-height: 0.95; letter-spacing: -0.03em; margin: 20px 0 10px; }
+h1 em { font-style: italic; font-weight: 300; color: var(--sunset); }
+.sub { font-size: 14px; opacity: 0.7; margin-bottom: 32px; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 36px; }
+.stat { background: var(--ink); color: var(--paper); padding: 14px; }
+.stat .n { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 700; line-height: 1; }
+.stat .l { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.6; margin-top: 6px; }
+.poll { border-top: 2px solid var(--ink); padding: 20px 0 28px; }
+.poll-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+.poll h2 { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 700; }
+.poll .meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.6; }
+.row { background: var(--cream); padding: 12px 14px; margin-bottom: 8px; border-left: 3px solid var(--line); }
+.row.lead { border-left-color: var(--sunset); }
+.row-top { display: flex; justify-content: space-between; gap: 12px; font-weight: 700; }
+.row-top .num { font-family: 'JetBrains Mono', monospace; white-space: nowrap; }
+.track { height: 6px; background: var(--line); margin: 8px 0 6px; }
+.fill { height: 100%; background: var(--ink); }
+.row.lead .fill { background: var(--sunset); }
+.detail { font-size: 12px; opacity: 0.7; }
+.empty, .err { font-size: 14px; opacity: 0.7; padding: 20px 0; }
+.updated { font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.5; margin-top: 24px; }
+</style>
+</head>
+<body>
+<main>
+  <a class="back" href="index.html">← Back to the trip</a>
+  <h1>Vote <em>results</em></h1>
+  <p class="sub">Live tallies for every "pick one" on the itinerary. Refreshes every 15 seconds.</p>
+  <div class="stats" id="stats"></div>
+  <div id="polls"><p class="empty">Loading…</p></div>
+  <p class="updated" id="updated"></p>
+</main>
+<script>
+(() => {
+  const API = 'https://kzbpqesnugvqqsgxnxfq.supabase.co/rest/v1/rpc/get_results';
+  const KEY = 'sb_publishable_RYfmcxx3FCOnMQOKwJrnQg_wD_ToCnY';
+  const CREW = 13;
+  const POLLS = [
+    ['d1-dinner', 'Thu · First dinner'],
+    ['d1-night', 'Thu · Night out'],
+    ['d2-breakfast', 'Fri · Breakfast'],
+    ['d2-beach', 'Fri · Beach'],
+    ['d3-surf', 'Sat · Surf lesson'],
+    ['d3-pregame', 'Sat · Pre-game'],
+    ['d3-after', 'Sat · After the game'],
+  ];
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  function render(data) {
+    let totalVotes = 0, totalSelections = 0, decided = 0;
+    const html = POLLS.map(([pid, title]) => {
+      const rows = data.filter(r => r.poll_id === pid).map(r => ({ ...r, votes: +r.votes, selections: +r.selections }));
+      const total = rows.reduce((a, r) => a + r.votes, 0);
+      const max = Math.max(0, ...rows.map(r => r.votes));
+      totalVotes += total;
+      totalSelections += rows.reduce((a, r) => a + r.selections, 0);
+      if (total && rows.filter(r => r.votes === max).length === 1) decided++;
+      rows.sort((a, b) => b.votes - a.votes || b.selections - a.selections);
+      return `<section class="poll">
+        <div class="poll-head"><h2>${esc(title)}</h2><span class="meta">${total} of ${CREW} voted</span></div>
+        ${rows.map(r => {
+          const pct = total ? Math.round(r.votes / total * 100) : 0;
+          const names = (r.voters || []).filter(n => n && n !== 'anon');
+          const anon = (r.voters || []).length - names.length;
+          const who = [names.map(esc).join(', '), anon ? `${anon} anonymous` : ''].filter(Boolean).join(' + ');
+          return `<div class="row${r.votes && r.votes === max ? ' lead' : ''}">
+            <div class="row-top"><span>${esc(r.label)}</span><span class="num">${r.votes} · ${pct}%</span></div>
+            <div class="track"><div class="fill" style="width:${pct}%"></div></div>
+            <div class="detail">Picked ${r.selections} time${r.selections === 1 ? '' : 's'} in total (incl. changed votes)${who ? ' · ' + who : ''}</div>
+          </div>`;
+        }).join('')}
+      </section>`;
+    }).join('');
+    document.getElementById('polls').innerHTML = html;
+    document.getElementById('stats').innerHTML = [
+      [totalVotes, 'Current votes'], [totalSelections, 'Total selections'], [`${decided}/${POLLS.length}`, 'Clear leaders'],
+    ].map(([n, l]) => `<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`).join('');
+    document.getElementById('updated').textContent = 'Updated ' + new Date().toLocaleTimeString();
+  }
+
+  function load() {
+    fetch(API, {
+      method: 'POST',
+      headers: { apikey: KEY, Authorization: 'Bearer ' + KEY, 'Content-Type': 'application/json' },
+      body: '{}'
+    }).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(render)
+      .catch(() => {
+        if (!document.querySelector('.poll')) document.getElementById('polls').innerHTML = '<p class="err">Couldn\'t load results — try refreshing.</p>';
+      });
+  }
+  load();
+  setInterval(() => { if (!document.hidden) load(); }, 15000);
+})();
+</script>
+</body>
+</html>

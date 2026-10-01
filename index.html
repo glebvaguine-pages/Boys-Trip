@@ -191,6 +191,29 @@ footer .meta {
   margin: -8px 0 28px; opacity: 0.85;
 }
 @media (max-width: 600px) { section { padding: 48px 20px; } .hero { padding: 20px; } }
+
+/* voting */
+.vote-row { display: flex; align-items: center; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+.vote-btn {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; border: 1.5px solid var(--ink); background: transparent; color: var(--ink);
+  padding: 7px 12px; cursor: pointer; min-height: 34px;
+}
+.vote-btn:hover { background: var(--ink); color: var(--paper); }
+.vote-btn[aria-pressed="true"] { background: var(--sunset); border-color: var(--sunset); color: var(--cream); }
+.vote-btn:disabled { opacity: 0.5; cursor: wait; }
+.vote-meter { flex: 1; min-width: 120px; display: flex; align-items: center; gap: 8px; }
+.vote-track { flex: 1; height: 6px; background: var(--line); position: relative; }
+.vote-fill { position: absolute; inset: 0 auto 0 0; width: 0; background: var(--sunset); transition: width .4s ease; }
+.option.evan .vote-fill { background: var(--evan); }
+.vote-count { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; white-space: nowrap; }
+.option.leading { box-shadow: inset 0 0 0 1.5px var(--sunset); }
+.vote-bar {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 13px;
+  border: 1.5px dashed var(--ink); padding: 12px 14px; margin: 0 0 32px;
+}
+.vote-bar a { color: var(--sunset); font-weight: 700; }
+.vote-bar .who { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; }
 </style>
 </head>
 <body>
@@ -263,6 +286,11 @@ footer .meta {
   <h2 class="section-title"><em>Day-by-day</em>.</h2>
   <p class="lead">Options to vote on where it matters. Everything's Uber-friendly.</p>
   <div class="evan-legend"><span class="evan-badge" style="margin-bottom:0;">★ Evan's List</span><span>= a local rec from Evan, worked into the plan</span></div>
+  <div class="vote-bar" id="vote-bar">
+    <span>🗳️ <strong>Vote on every "pick one"</strong> — tap an option. You can change your mind anytime.</span>
+    <span class="who" id="vote-who"></span>
+    <a href="results.html">Live results →</a>
+  </div>
 
   <div class="day">
     <div class="day-header">
@@ -273,15 +301,15 @@ footer .meta {
 
     <div class="slot">
       <span class="slot-label">6:30 PM · first dinner — pick one</span>
-      <div class="options">
-        <div class="option">
+      <div class="options" data-poll="d1-dinner">
+        <div class="option" data-option="la-puerta">
           <span class="option-letter">A</span>
           <h4>La Puerta</h4>
           <div class="where">Gaslamp · open until 1 AM</div>
           <p>Mexican bar-restaurant, bold cocktails, packed patio. Doubles as your first bar of the night — easy for Gleb to slot into once he lands.</p>
           <span class="price-tag">~$25 CAD pp</span>
         </div>
-        <div class="option evan">
+        <div class="option evan" data-option="kettner">
           <span class="option-letter">B</span>
           <span class="evan-badge">★ Evan's List</span>
           <h4>Kettner Exchange</h4>
@@ -294,15 +322,15 @@ footer .meta {
 
     <div class="slot">
       <span class="slot-label">Night · pick one</span>
-      <div class="options">
-        <div class="option">
+      <div class="options" data-poll="d1-night">
+        <div class="option" data-option="gaslamp-clubbing">
           <span class="option-letter">A</span>
           <h4>Gaslamp Clubbing</h4>
           <div class="where">Side Bar or Parq</div>
           <p>Boutique nightclub or mega-club energy, big DJs, bottle service worth it for 13.</p>
           <span class="price-tag">$100–180 CAD pp</span>
         </div>
-        <div class="option">
+        <div class="option" data-option="pacers">
           <span class="option-letter">B</span>
           <h4>Pacers Showgirls</h4>
           <div class="where">Midway · ~$20 Uber</div>
@@ -323,15 +351,15 @@ footer .meta {
 
     <div class="slot">
       <span class="slot-label">Breakfast · pick one</span>
-      <div class="options">
-        <div class="option">
+      <div class="options" data-poll="d2-breakfast">
+        <div class="option" data-option="konos">
           <span class="option-letter">A</span>
           <h4>Kono's Cafe</h4>
           <div class="where">PB · Crystal Pier · ~10 min Uber</div>
           <p>Line moves fast — breakfast burritos are a local legend.</p>
           <span class="price-tag">~$18 CAD pp</span>
         </div>
-        <div class="option">
+        <div class="option" data-option="cottage">
           <span class="option-letter">B</span>
           <h4>The Cottage La Jolla</h4>
           <div class="where">La Jolla · ~7 min Uber, closer to the house</div>
@@ -343,14 +371,14 @@ footer .meta {
 
     <div class="slot">
       <span class="slot-label">Day · beach — pick one</span>
-      <div class="options">
-        <div class="option">
+      <div class="options" data-poll="d2-beach">
+        <div class="option" data-option="south-mission">
           <span class="option-letter">A</span>
           <h4>South Mission Beach</h4>
           <div class="where">~15 min Uber · volleyball, 3-mile boardwalk</div>
           <p>The classic boys-trip beach — busier, more of a scene. Rent bikes (~$25 CAD/hr).</p>
         </div>
-        <div class="option">
+        <div class="option" data-option="la-jolla-cove">
           <span class="option-letter">B</span>
           <h4>La Jolla Cove</h4>
           <div class="where">~7 min Uber · closest to the house</div>
@@ -400,8 +428,8 @@ footer .meta {
 
     <div class="slot">
       <span class="slot-label">Morning · surf lesson, pick one</span>
-      <div class="options">
-        <div class="option">
+      <div class="options" data-poll="d3-surf">
+        <div class="option" data-option="surf-diva">
           <span class="option-letter">A</span>
           <h4>Surf Diva</h4>
           <div class="where">La Jolla Shores · ~7 min Uber, closest to the house</div>
@@ -409,7 +437,7 @@ footer .meta {
           <span class="price-tag">~$130 CAD pp</span>
           <a class="link-btn" href="https://surfdiva.com/private-surf-lessons/" target="_blank" rel="noopener">Book →</a>
         </div>
-        <div class="option">
+        <div class="option" data-option="pb-surf-shop">
           <span class="option-letter">B</span>
           <h4>PB Surf Shop</h4>
           <div class="where">Pacific Beach · ~10 min Uber</div>
@@ -417,7 +445,7 @@ footer .meta {
           <span class="price-tag">~$130 CAD pp</span>
           <a class="link-btn" href="https://www.pbsurfshop.com/san-diego-group-surf-lessons/" target="_blank" rel="noopener">Book →</a>
         </div>
-        <div class="option">
+        <div class="option" data-option="everyday-california">
           <span class="option-letter">C</span>
           <h4>Everyday California</h4>
           <div class="where">La Jolla Shores</div>
@@ -431,15 +459,15 @@ footer .meta {
 
     <div class="slot">
       <span class="slot-label">3:30 PM · pre-game — pick one</span>
-      <div class="options">
-        <div class="option">
+      <div class="options" data-poll="d3-pregame">
+        <div class="option" data-option="revelxp">
           <span class="option-letter">A</span>
           <h4>REVELxp Tailgate</h4>
           <div class="where">Official package, Snapdragon lots</div>
           <p>Food and drinks handled — zero setup for a group of 13. Book via the Aztecs ticketing page.</p>
           <span class="price-tag">$60–90 CAD pp</span>
         </div>
-        <div class="option">
+        <div class="option" data-option="diy-tailgate">
           <span class="option-letter">B</span>
           <h4>DIY Tailgate</h4>
           <div class="where">Snapdragon lots</div>
@@ -460,14 +488,14 @@ footer .meta {
 
     <div class="slot">
       <span class="slot-label">10:30 PM · after the game — pick one</span>
-      <div class="options">
-        <div class="option">
+      <div class="options" data-poll="d3-after">
+        <div class="option" data-option="mission-valley">
           <span class="option-letter">A</span>
           <h4>Mission Valley bars</h4>
           <div class="where">Short walk/Uber from the stadium</div>
           <p>Postgame crowd, no long haul back across town.</p>
         </div>
-        <div class="option">
+        <div class="option" data-option="gaslamp">
           <span class="option-letter">B</span>
           <h4>Trolley back + Gaslamp</h4>
           <div class="where">Green Line → Old Town → Uber</div>
@@ -545,8 +573,97 @@ footer .meta {
 
 <footer>
   <p class="tagline">Get there. <em>Catch a wave.</em> Go home tan.</p>
-  <p class="meta">SD · Oct 15–18 · 13 Guys</p>
+  <p class="meta">SD · Oct 15–18 · 13 Guys · <a href="results.html" style="color: inherit;">Vote results</a></p>
 </footer>
 
+
+<script>
+(() => {
+  const API = 'https://kzbpqesnugvqqsgxnxfq.supabase.co/rest/v1/rpc/';
+  const KEY = 'sb_publishable_RYfmcxx3FCOnMQOKwJrnQg_wD_ToCnY';
+  const store = {
+    get(k) { try { return localStorage.getItem(k); } catch { return null; } },
+    set(k, v) { try { localStorage.setItem(k, v); } catch {} }
+  };
+  const rpc = (fn, body) => fetch(API + fn, {
+    method: 'POST',
+    headers: { apikey: KEY, Authorization: 'Bearer ' + KEY, 'Content-Type': 'application/json' },
+    body: JSON.stringify(body || {})
+  }).then(r => { if (!r.ok) throw new Error(r.status); return r.status === 204 ? null : r.json(); });
+
+  let voter = store.get('sd-voter-id');
+  if (!voter) { voter = crypto.randomUUID ? crypto.randomUUID() : ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c => (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)); store.set('sd-voter-id', voter); }
+  const mine = JSON.parse(store.get('sd-my-votes') || '{}');
+  const who = document.getElementById('vote-who');
+  const renderWho = () => {
+    const n = store.get('sd-voter-name');
+    who.textContent = n ? `Voting as ${n}` : '';
+  };
+  const askName = () => {
+    let n = store.get('sd-voter-name');
+    if (!n) {
+      n = (prompt('Your name? (so the crew knows who picked what)') || '').trim().slice(0, 40);
+      if (n) store.set('sd-voter-name', n);
+      renderWho();
+    }
+    return store.get('sd-voter-name') || '';
+  };
+
+  const polls = [...document.querySelectorAll('.options[data-poll]')];
+  polls.forEach(group => {
+    group.querySelectorAll('.option[data-option]').forEach(opt => {
+      const row = document.createElement('div');
+      row.className = 'vote-row';
+      row.innerHTML = '<button type="button" class="vote-btn" aria-pressed="false">Vote</button>' +
+        '<div class="vote-meter"><div class="vote-track"><div class="vote-fill"></div></div><span class="vote-count">–</span></div>';
+      opt.appendChild(row);
+      row.querySelector('button').addEventListener('click', e => vote(group, opt, e.currentTarget));
+    });
+  });
+
+  let results = [];
+  const paint = () => {
+    polls.forEach(group => {
+      const pid = group.dataset.poll;
+      const rows = results.filter(r => r.poll_id === pid);
+      const total = rows.reduce((a, r) => a + Number(r.votes), 0);
+      const max = Math.max(0, ...rows.map(r => Number(r.votes)));
+      group.querySelectorAll('.option[data-option]').forEach(opt => {
+        const r = rows.find(x => x.option_id === opt.dataset.option);
+        const v = r ? Number(r.votes) : 0;
+        const pct = total ? Math.round(v / total * 100) : 0;
+        opt.querySelector('.vote-fill').style.width = pct + '%';
+        opt.querySelector('.vote-count').textContent = `${v} vote${v === 1 ? '' : 's'}${total ? ' · ' + pct + '%' : ''}`;
+        opt.classList.toggle('leading', v > 0 && v === max);
+        const btn = opt.querySelector('.vote-btn');
+        const picked = mine[pid] === opt.dataset.option;
+        btn.setAttribute('aria-pressed', picked);
+        btn.textContent = picked ? '✓ Your pick' : 'Vote';
+      });
+    });
+  };
+  const refresh = () => rpc('get_results').then(r => { results = r; paint(); }).catch(() => {});
+
+  async function vote(group, opt, btn) {
+    const pid = group.dataset.poll, oid = opt.dataset.option;
+    if (mine[pid] === oid) return;
+    const name = askName();
+    btn.disabled = true;
+    try {
+      await rpc('cast_vote', { p_poll: pid, p_option: oid, p_voter: voter, p_name: name || null });
+      mine[pid] = oid; store.set('sd-my-votes', JSON.stringify(mine));
+      await refresh();
+    } catch (err) {
+      alert("Couldn't save your vote — check your connection and try again.");
+    } finally { btn.disabled = false; }
+  }
+
+  renderWho();
+  paint();
+  refresh();
+  setInterval(() => { if (!document.hidden) refresh(); }, 15000);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
+})();
+</script>
 </body>
 </html>
