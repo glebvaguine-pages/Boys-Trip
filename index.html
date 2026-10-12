@@ -203,8 +203,13 @@ footer .meta {
 }
 .pick.booked:not(.evan) { border: 1.5px solid var(--sunset); box-shadow: 5px 5px 0 var(--sunset); }
 
-.ic-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 22px 0 8px; font-size: 13px; }
-.ic-row a:not(.ic-btn) { color: var(--sunset); font-weight: 700; }
+.ic-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+.copy-btn {
+  font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+  background: var(--paper); color: var(--ink); border: 1.5px solid var(--ink); padding: 11px 16px; cursor: pointer;
+}
+.copy-btn:hover { background: var(--paper-warm); }
+.copy-status { font-size: 13px; margin-top: 8px; min-height: 1em; }
 .ic-btn {
   display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px;
   font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; text-decoration: none;
@@ -302,14 +307,6 @@ footer .meta {
     <a href="https://www.airbnb.com/rooms/1405294922404311889?unique_share_id=e2896d6c-bb97-428b-b3df-8de001e5b666&viralityEntryPoint=1&s=76" target="_blank" rel="noopener" style="display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--paper); background: var(--ink); padding: 10px 16px; text-decoration: none; margin-top: 8px;">View on Airbnb →</a>
   </div>
 
-  <div class="ic-row">
-    <a class="ic-btn" href="https://www.instacart.com/store/costco" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.6 12.2a1.5 1.5 0 0 0 1.5 1.2h8.8a1.5 1.5 0 0 0 1.5-1.1L21 7H6"/></svg>
-      Order on Instacart
-    </a>
-    <span>Costco same-day delivery to the house · build it from the <a href="#list">shopping list</a></span>
-  </div>
-
   <div class="callout">
     <h4>Sort out early</h4>
     <p>Not beachfront — every beach day needs an Uber. With 5 bedrooms for 13, settle room assignments before Thursday; the granny flat is the natural quiet pick.</p>
@@ -331,8 +328,16 @@ footer .meta {
     <div class="shop-quick" id="shop-quick" aria-label="Quick add"></div>
     <div class="shop-meta"><span id="shop-count">Loading…</span><span id="shop-who"></span></div>
     <ul class="shop-items" id="shop-items"></ul>
+    <div class="ic-row">
+      <button type="button" class="copy-btn" id="shop-copy">Copy list for order</button>
+      <a class="ic-btn" href="https://www.instacart.com/store/costco" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.6 12.2a1.5 1.5 0 0 0 1.5 1.2h8.8a1.5 1.5 0 0 0 1.5-1.1L21 7H6"/></svg>
+        Order on Instacart
+      </a>
+    </div>
+    <p class="copy-status" id="shop-copy-status" role="status"></p>
   </div>
-  <p style="font-size: 13px; opacity: 0.65; margin-top: 10px;">Tick items off as they go in the cart. Whoever places the order: schedule the delivery window for Thursday 4:30–6 PM.</p>
+  <p style="font-size: 13px; opacity: 0.65; margin-top: 10px;">Tick items off once they're ordered — "Copy list" only grabs the unticked ones. Whoever places the order: schedule the delivery window for Thursday 4:30–6 PM.</p>
 </section>
 
 <!-- ITINERARY -->
@@ -799,6 +804,24 @@ footer .meta {
     b.type = 'button'; b.textContent = '+ ' + q;
     b.onclick = () => add(q, '');
     $('shop-quick').append(b);
+  });
+
+  $('shop-copy').addEventListener('click', async () => {
+    const todo = items.filter(i => !i.done);
+    const status = $('shop-copy-status');
+    if (!todo.length) { status.textContent = 'Nothing to order — every item is ticked off.'; return; }
+    const text = 'Add these to my Costco cart on Instacart (delivery to the Airbnb, Thursday Oct 15, 4:30–6 PM):\n' +
+      todo.map(i => `- ${i.item}${i.qty ? ' × ' + i.qty : ''}`).join('\n');
+    let ok = false;
+    try { await navigator.clipboard.writeText(text); ok = true; } catch {
+      const ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.append(ta); ta.select();
+      try { ok = document.execCommand('copy'); } catch {}
+      ta.remove();
+    }
+    status.textContent = ok ? `Copied ${todo.length} item${todo.length === 1 ? '' : 's'} ✓ — paste into Claude to build the cart.`
+                            : "Couldn't copy automatically — long-press to select the list instead.";
   });
 
   showWho(); render(); refresh();
