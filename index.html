@@ -203,6 +203,15 @@ footer .meta {
 }
 .pick.booked:not(.evan) { border: 1.5px solid var(--sunset); box-shadow: 5px 5px 0 var(--sunset); }
 
+.ic-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 22px 0 8px; font-size: 13px; }
+.ic-row a:not(.ic-btn) { color: var(--sunset); font-weight: 700; }
+.ic-btn {
+  display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px;
+  font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; text-decoration: none;
+  background: #0b7d0b; color: #fff; padding: 11px 16px; border: 1.5px solid var(--ink); box-shadow: 4px 4px 0 var(--ink);
+}
+.ic-btn:hover { transform: translate(1px, 1px); box-shadow: 3px 3px 0 var(--ink); }
+
 /* shopping list */
 .shop { background: var(--cream); border: 1.5px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); padding: 18px; max-width: 680px; }
 .shop-form { display: flex; gap: 8px; }
@@ -291,6 +300,14 @@ footer .meta {
     <h4 style="font-size: 28px;">New! 5 Bed 5.5 Bath, PB, Views, LUX, Air Hockey</h4>
     <p>4,000 sq ft "moody modern luxury." Chef's kitchen, outdoor terraces with fire pit + BBQ, ocean/city views, free parking, air hockey. Bedroom 4 is an attached granny flat with its own kitchen/laundry.</p>
     <a href="https://www.airbnb.com/rooms/1405294922404311889?unique_share_id=e2896d6c-bb97-428b-b3df-8de001e5b666&viralityEntryPoint=1&s=76" target="_blank" rel="noopener" style="display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--paper); background: var(--ink); padding: 10px 16px; text-decoration: none; margin-top: 8px;">View on Airbnb →</a>
+  </div>
+
+  <div class="ic-row">
+    <a class="ic-btn" href="https://www.instacart.com/store/costco" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.6 12.2a1.5 1.5 0 0 0 1.5 1.2h8.8a1.5 1.5 0 0 0 1.5-1.1L21 7H6"/></svg>
+      Order on Instacart
+    </a>
+    <span>Costco same-day delivery to the house · build it from the <a href="#list">shopping list</a></span>
   </div>
 
   <div class="callout">
