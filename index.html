@@ -203,50 +203,40 @@ footer .meta {
 }
 .pick.booked:not(.evan) { border: 1.5px solid var(--sunset); box-shadow: 5px 5px 0 var(--sunset); }
 
-.ic-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
-.copy-btn {
+.hero-cry {
+  font-family: 'Fraunces', serif; font-weight: 700; font-size: clamp(26px, 6vw, 44px);
+  line-height: 1; letter-spacing: -0.01em; color: var(--sunset); margin-top: 32px;
+}
+.hero-cry em { font-style: normal; color: var(--sun); }
+.hero-title { margin: 14px 0 20px; }
+.hero-addr {
+  display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700;
+  color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--sunset); padding-bottom: 2px; margin-bottom: 28px;
+}
+.house { background: var(--ink); color: var(--paper); padding: 20px; margin-bottom: 24px; box-shadow: 6px 6px 0 var(--sunset); max-width: 680px; }
+.house-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.house-tag { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; }
+.house-sub { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.6; }
+.house-form { display: flex; gap: 8px; }
+.house [hidden] { display: none !important; }
+.house-form input {
+  flex: 1; min-width: 0; font: inherit; font-size: 16px; padding: 10px 12px; border: 1.5px solid var(--paper);
+  background: transparent; color: var(--paper); border-radius: 0;
+}
+.house-form input::placeholder { color: var(--paper); opacity: 0.5; }
+.house-form button {
   font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
-  background: var(--paper); color: var(--ink); border: 1.5px solid var(--ink); padding: 11px 16px; cursor: pointer;
+  background: var(--sun); color: var(--ink); border: 0; padding: 0 16px; cursor: pointer;
 }
-.copy-btn:hover { background: var(--paper-warm); }
-.copy-status { font-size: 13px; margin-top: 8px; min-height: 1em; }
-.ic-btn {
-  display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px;
-  font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; text-decoration: none;
-  background: #0b7d0b; color: #fff; padding: 11px 16px; border: 1.5px solid var(--ink); box-shadow: 4px 4px 0 var(--ink);
-}
-.ic-btn:hover { transform: translate(1px, 1px); box-shadow: 3px 3px 0 var(--ink); }
-
-/* shopping list */
-.shop { background: var(--cream); border: 1.5px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); padding: 18px; max-width: 680px; }
-.shop-form { display: flex; gap: 8px; }
-.shop-form input {
-  font: inherit; font-size: 16px; border: 1.5px solid var(--ink); background: var(--paper); color: var(--ink);
-  padding: 10px 12px; min-width: 0; border-radius: 0;
-}
-#shop-item { flex: 1; }
-#shop-qty { width: 72px; }
-.shop-form button, .shop-quick button {
-  font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer;
-}
-.shop-form button { font-size: 12px; background: var(--ink); color: var(--paper); border: 0; padding: 0 16px; }
-.shop-quick { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
-.shop-quick button { font-size: 11px; background: transparent; color: var(--ink); border: 1px dashed var(--ink); padding: 6px 9px; }
-.shop-quick button:hover { background: var(--paper-warm); }
-.shop-meta {
-  display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin: 14px 0 6px;
-  font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.6;
-}
-.shop-items { list-style: none; border-top: 1px solid var(--line); }
-.shop-items li { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
-.shop-items input[type=checkbox] { width: 20px; height: 20px; accent-color: var(--sunset); flex: none; cursor: pointer; }
-.shop-items .txt { flex: 1; min-width: 0; overflow-wrap: anywhere; }
-.shop-items .qty { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; margin-left: 6px; }
-.shop-items .by { display: block; font-size: 11px; opacity: 0.55; }
-.shop-items li.done .txt { text-decoration: line-through; opacity: 0.5; }
-.shop-items .rm { background: none; border: 0; font-size: 20px; line-height: 1; color: var(--ink); opacity: 0.4; cursor: pointer; padding: 4px 6px; }
-.shop-items .rm:hover { opacity: 1; color: var(--sunset); }
-.shop-items .empty { opacity: 0.6; font-size: 14px; }
+.house-form button:disabled { opacity: 0.6; }
+.house-msg { font-size: 13px; margin: 8px 0 0; min-height: 0; }
+.house-msg:empty { display: none; }
+.house-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(245, 237, 224, 0.15); }
+.house-row .k { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.6; }
+.house-row .v { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 15px; color: var(--paper); text-align: right; }
+.house-row .v.big { font-size: 30px; letter-spacing: 0.15em; color: var(--sun); }
+.house-row a.v { color: var(--sun); }
+.house-note { font-size: 13px; opacity: 0.8; margin: 8px 0 4px; }
 </style>
 </head>
 <body>
@@ -256,7 +246,11 @@ footer .meta {
     <span>San Diego · CA</span>
     <span>13 GUYS · BOOKED ✓</span>
   </div>
-  <h1 class="hero-title">Boys<br>Trip<br><em>San Diego</em></h1>
+  <div>
+    <p class="hero-cry"><em>MUSKRAT</em> LFG!</p>
+    <h1 class="hero-title">Boys<br>Trip<br><em>San Diego</em></h1>
+    <a class="hero-addr" href="https://maps.google.com/?q=2595+Chalcedony+St,+San+Diego,+CA+92109" target="_blank" rel="noopener">📍 2595 Chalcedony St, San Diego, CA 92109 →</a>
+  </div>
   <div class="hero-meta">
     <div class="hero-meta-item"><div class="label">Dates</div><div class="value">Oct 15<br>– 18</div></div>
     <div class="hero-meta-item"><div class="label">From</div><div class="value">YVR<br>Vancouver</div></div>
@@ -265,40 +259,31 @@ footer .meta {
   </div>
 </header>
 
-<!-- FLIGHTS -->
-<section id="flights" class="anchor">
-  <div class="section-num">01 · Getting There</div>
-  <h2 class="section-title">Flights — <em>locked in</em>.</h2>
-  <p class="lead">Two arrival waves Thursday. Everyone flies home together Sunday.</p>
-
-  <div class="compare">
-    <div class="flight-card">
-      <div class="flight-tag">Wave 01 · Main Crew</div>
-      <h3 class="flight-name">12 Guys</h3>
-      <div class="flight-route">YVR → SAN · Thurs Oct 15</div>
-      <div class="flight-row"><span class="k">Arrives SAN</span><span class="v">4:00 PM</span></div>
-      <div class="flight-row"><span class="k">At Airbnb</span><span class="v">~5:00 PM</span></div>
-    </div>
-    <div class="flight-card featured">
-      <div class="flight-tag">Wave 02 · Solo</div>
-      <h3 class="flight-name">Gleb</h3>
-      <div class="flight-route">YVR → SAN · Thurs Oct 15</div>
-      <div class="flight-row"><span class="k">Arrives SAN</span><span class="v">7:00 PM</span></div>
-      <div class="flight-row"><span class="k">Joins group at</span><span class="v">PB AleHouse</span></div>
-    </div>
-  </div>
-
-  <div class="callout">
-    <h4>Logistics</h4>
-    <p>Main crew: Uber straight to the house, drop bags, Costco delivery meets you there, then dinner at Pacific Beach AleHouse at 7:00 — Gleb Ubers straight there from SAN. <strong>Return:</strong> one flight, Sunday 4:50 PM — Ubers to SAN by 1:45 PM.</p>
-  </div>
-</section>
-
 <!-- AIRBNB -->
 <section id="airbnb" class="anchor">
-  <div class="section-num">02 · Where We Stay</div>
-  <h2 class="section-title">The <em>house</em> — booked.</h2>
-  <p class="lead">5 bed, 5.5 bath, sleeps up to 14 — PB/La Jolla border, ~2 mi from the beach, 15–20 min from the airport.</p>
+  <div class="section-num">01 · Where We Stay</div>
+  <h2 class="section-title">The <em>house</em>.</h2>
+  <p class="lead"><a href="https://maps.google.com/?q=2595+Chalcedony+St,+San+Diego,+CA+92109" target="_blank" rel="noopener" style="color: inherit;">2595 Chalcedony St, San Diego, CA 92109</a> — PB/La Jolla border, ~2 mi from the beach.</p>
+
+  <div class="house" id="house">
+    <div class="house-head">
+      <span class="house-tag">🔒 House info</span>
+      <span class="house-sub">Garage code · Wi-Fi · host contact</span>
+    </div>
+    <form class="house-form" id="house-form" autocomplete="off">
+      <input id="house-pass" type="password" placeholder="Crew password" aria-label="Crew password" autocapitalize="off" autocorrect="off" spellcheck="false" required>
+      <button type="submit">Unlock</button>
+    </form>
+    <p class="house-msg" id="house-msg" role="status"></p>
+    <div class="house-body" id="house-body" hidden>
+      <div class="house-row"><span class="k">Garage code</span><span class="v big" id="h-code"></span></div>
+      <p class="house-note" id="h-steps"></p>
+      <div class="house-row"><span class="k">Wi-Fi</span><span class="v" id="h-wifi"></span></div>
+      <div class="house-row"><span class="k">Password</span><span class="v" id="h-wifipw"></span></div>
+      <div class="house-row"><span class="k">Host</span><a class="v" id="h-phone"></a></div>
+      <p class="house-note" id="h-note"></p>
+    </div>
+  </div>
 
   <div class="pick" style="border: 1.5px solid var(--ink); box-shadow: 6px 6px 0 var(--ink);">
     <div class="where">Pacific Beach / La Jolla border · Superhost, 5.0★ (41 reviews)</div>
@@ -306,43 +291,11 @@ footer .meta {
     <p>4,000 sq ft "moody modern luxury." Chef's kitchen, outdoor terraces with fire pit + BBQ, ocean/city views, free parking, air hockey. Bedroom 4 is an attached granny flat with its own kitchen/laundry.</p>
     <a href="https://www.airbnb.com/rooms/1405294922404311889?unique_share_id=e2896d6c-bb97-428b-b3df-8de001e5b666&viralityEntryPoint=1&s=76" target="_blank" rel="noopener" style="display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--paper); background: var(--ink); padding: 10px 16px; text-decoration: none; margin-top: 8px;">View on Airbnb →</a>
   </div>
-
-  <div class="callout">
-    <h4>Sort out early</h4>
-    <p>Not beachfront — every beach day needs an Uber. With 5 bedrooms for 13, settle room assignments before Thursday; the granny flat is the natural quiet pick.</p>
-  </div>
-</section>
-
-<!-- COSTCO LIST -->
-<section id="list" class="anchor">
-  <div class="section-num">03 · The Costco Run</div>
-  <h2 class="section-title">Shopping <em>list</em>.</h2>
-  <p class="lead">One Costco same-day delivery on Thursday, timed to land at the house around 5 PM with the main crew. Covers Friday breakfast at home, snacks, drinks and tailgate supplies. Add what you want — everyone sees the same list, live.</p>
-
-  <div class="shop">
-    <form class="shop-form" id="shop-form" autocomplete="off">
-      <input id="shop-item" maxlength="80" placeholder="Add an item… e.g. Breakfast burritos" aria-label="Item" required>
-      <input id="shop-qty" maxlength="20" placeholder="Qty" aria-label="Quantity">
-      <button type="submit">Add</button>
-    </form>
-    <div class="shop-quick" id="shop-quick" aria-label="Quick add"></div>
-    <div class="shop-meta"><span id="shop-count">Loading…</span><span id="shop-who"></span></div>
-    <ul class="shop-items" id="shop-items"></ul>
-    <div class="ic-row">
-      <button type="button" class="copy-btn" id="shop-copy">Copy list for order</button>
-      <a class="ic-btn" href="https://www.instacart.com/store/costco" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.6 12.2a1.5 1.5 0 0 0 1.5 1.2h8.8a1.5 1.5 0 0 0 1.5-1.1L21 7H6"/></svg>
-        Order on Instacart
-      </a>
-    </div>
-    <p class="copy-status" id="shop-copy-status" role="status"></p>
-  </div>
-  <p style="font-size: 13px; opacity: 0.65; margin-top: 10px;">Tick items off once they're ordered — "Copy list" only grabs the unticked ones. Whoever places the order: schedule the delivery window for Thursday 4:30–6 PM.</p>
 </section>
 
 <!-- ITINERARY -->
 <section id="day1" class="anchor">
-  <div class="section-num">04 · The Itinerary</div>
+  <div class="section-num">02 · The Itinerary</div>
   <h2 class="section-title"><em>Day-by-day</em>.</h2>
   <p class="lead">Booked dinners are locked in. Everything else is a menu of options. Everything's Uber-friendly.</p>
   <div class="evan-legend">
@@ -360,9 +313,9 @@ footer .meta {
     <div class="slot">
       <span class="slot-label">~5:00 PM · at the house</span>
       <div class="pick" style="background: var(--paper-warm);">
-        <h4>Costco delivery lands</h4>
-        <div class="where">Airbnb · see the <a href="#list" style="color: var(--sunset);">shopping list</a></div>
-        <p>Stock the fridge, crack the first beers, settle rooms. Uber to dinner around 6:45.</p>
+        <h4>Check in &amp; stock the fridge</h4>
+        <div class="where">Airbnb · garage code in <a href="#house" style="color: var(--sunset);">House info</a></div>
+        <p>Costco groceries are ordered ✓. Crack the first beers, settle rooms. Uber to dinner around 6:45.</p>
       </div>
     </div>
 
@@ -372,7 +325,7 @@ footer .meta {
         <span class="booked-tag">Reserved · 13</span>
         <h4>Pacific Beach AleHouse</h4>
         <div class="where">Grand Ave, PB · steps from the boardwalk · ~10 min Uber from the house</div>
-        <p>Big rooftop, house beers, solid pub food. Gleb lands at 7 and Ubers straight here (~20 min from SAN).</p>
+        <p>Big rooftop, house beers, solid pub food.</p>
       </div>
     </div>
 
@@ -606,7 +559,7 @@ footer .meta {
           <span class="crew-tag">👍 Crew vote</span>
           <h4>DIY Tailgate</h4>
           <div class="where">Snapdragon lots</div>
-          <p>Cheaper, more chaotic. Arriving by trolley means coolers and snacks, not a grill — add supplies to the Costco list.</p>
+          <p>Cheaper, more chaotic. Arriving by trolley means coolers and snacks, not a grill — grab supplies from the house haul.</p>
           <span class="price-tag">$30–40 CAD pp</span>
         </div>
       </div>
@@ -693,14 +646,14 @@ footer .meta {
 
 <!-- BUDGET -->
 <section id="budget" class="anchor">
-  <div class="section-num">05 · The Damage</div>
+  <div class="section-num">03 · The Damage</div>
   <h2 class="section-title">Total <em>budget</em>, per person.</h2>
   <p class="lead">Ground cost in CAD — flights already booked, add your own fare on top.</p>
 
   <div class="budget">
     <div class="budget-row head"><div class="item">Item</div><div class="col">Estimate</div></div>
     <div class="budget-row"><div class="item">Airbnb (3 nights, ÷13)</div><div class="col">$185–260</div></div>
-    <div class="budget-row"><div class="item">Costco run (÷13)</div><div class="col">$40–70</div></div>
+    <div class="budget-row"><div class="item">Costco groceries ($398 USD ÷13, actual)</div><div class="col">~$42</div></div>
     <div class="budget-row"><div class="item">Restaurants (AleHouse, Kettner, brunches)</div><div class="col">$250–350</div></div>
     <div class="budget-row"><div class="item">Bars &amp; drinks</div><div class="col">$280–420</div></div>
     <div class="budget-row"><div class="item">Surf lesson</div><div class="col">$130–175</div></div>
@@ -708,12 +661,12 @@ footer .meta {
     <div class="budget-row"><div class="item">Ubers (whole trip)</div><div class="col">$100–150</div></div>
     <div class="budget-row"><div class="item">★ Mission Bay paddle boards</div><div class="col">$40–60</div></div>
     <div class="budget-row"><div class="item">Strip club (optional)</div><div class="col">$150–250</div></div>
-    <div class="budget-row total"><div class="item">Ground cost per person</div><div class="col">$1,265–1,885</div></div>
+    <div class="budget-row total"><div class="item">Ground cost per person</div><div class="col">$1,267–1,857</div></div>
   </div>
 
   <div class="callout">
     <h4>Bottom line</h4>
-    <p>Budget <strong>$1,265–1,885 CAD per person</strong> on the ground, plus your flight. REVELxp tailgate and the strip club push toward the top — DIY the tailgate and skip it to land near $1,265.</p>
+    <p>Budget <strong>$1,267–1,857 CAD per person</strong> on the ground, plus your flight. REVELxp tailgate and the strip club push toward the top — DIY the tailgate and skip it to land near $1,267.</p>
   </div>
 </section>
 
@@ -725,108 +678,48 @@ footer .meta {
 
 <script>
 (() => {
-  const API = 'https://kzbpqesnugvqqsgxnxfq.supabase.co/rest/v1/rpc/';
+  const API = 'https://kzbpqesnugvqqsgxnxfq.supabase.co/rest/v1/rpc/get_house_info';
   const KEY = 'sb_publishable_RYfmcxx3FCOnMQOKwJrnQg_wD_ToCnY';
-  const QUICK = ['Eggs', 'Bacon', 'Breakfast burritos', 'Bread', 'Coffee', 'OJ', 'Fruit', 'Water', 'Gatorade', 'Beer', 'Seltzers', 'Ice', 'Chips & salsa', 'Sunscreen', 'Tailgate cooler'];
   const store = {
     get(k) { try { return localStorage.getItem(k); } catch { return null; } },
     set(k, v) { try { localStorage.setItem(k, v); } catch {} }
   };
-  const rpc = (fn, body) => fetch(API + fn, {
-    method: 'POST',
-    headers: { apikey: KEY, Authorization: 'Bearer ' + KEY, 'Content-Type': 'application/json' },
-    body: JSON.stringify(body || {})
-  }).then(r => { if (!r.ok) throw new Error(r.status); return r.status === 204 ? null : r.json(); });
-
   const $ = id => document.getElementById(id);
-  const form = $('shop-form'), itemIn = $('shop-item'), qtyIn = $('shop-qty'), list = $('shop-items');
-  let items = [], loaded = false, busy = 0;
+  const form = $('house-form'), msg = $('house-msg'), btn = form.querySelector('button');
 
-  const name = () => {
-    let n = store.get('sd-voter-name');
-    if (!n) {
-      n = (prompt('Your name? (so the crew knows who added what)') || '').trim().slice(0, 40);
-      if (n) store.set('sd-voter-name', n);
-      showWho();
-    }
-    return n || '';
-  };
-  const showWho = () => { const n = store.get('sd-voter-name'); $('shop-who').textContent = n ? `Adding as ${n}` : ''; };
-
-  function render() {
-    const left = items.filter(i => !i.done).length;
-    $('shop-count').textContent = loaded ? `${items.length} item${items.length === 1 ? '' : 's'} · ${left} to get` : 'Loading…';
-    list.replaceChildren();
-    if (loaded && !items.length) {
-      const li = document.createElement('li'); li.className = 'empty'; li.textContent = 'Nothing yet — add the first item.'; list.append(li);
-    }
-    items.forEach(it => {
-      const li = document.createElement('li');
-      if (it.done) li.className = 'done';
-      const cb = document.createElement('input');
-      cb.type = 'checkbox'; cb.checked = it.done; cb.setAttribute('aria-label', 'Got ' + it.item);
-      cb.onchange = () => act(() => rpc('set_item_done', { p_id: it.id, p_done: cb.checked }), () => { it.done = cb.checked; });
-      const txt = document.createElement('span'); txt.className = 'txt'; txt.textContent = it.item;
-      if (it.qty) { const q = document.createElement('span'); q.className = 'qty'; q.textContent = '× ' + it.qty; txt.append(q); }
-      if (it.added_by) { const by = document.createElement('span'); by.className = 'by'; by.textContent = it.added_by; txt.append(by); }
-      const rm = document.createElement('button');
-      rm.type = 'button'; rm.className = 'rm'; rm.textContent = '×'; rm.setAttribute('aria-label', 'Remove ' + it.item);
-      rm.onclick = () => { if (confirm(`Remove "${it.item}" for everyone?`)) act(() => rpc('remove_item', { p_id: it.id }), () => { items = items.filter(x => x !== it); }); };
-      li.append(cb, txt, rm);
-      list.append(li);
-    });
+  function show(d) {
+    $('h-code').textContent = d.garage_code;
+    $('h-steps').textContent = d.garage_steps;
+    $('h-wifi').textContent = d.wifi_name;
+    $('h-wifipw').textContent = d.wifi_password;
+    $('h-phone').textContent = d.host_phone;
+    $('h-phone').href = 'tel:' + d.host_phone.replace(/[^0-9+]/g, '');
+    $('h-note').textContent = d.host_note;
+    form.hidden = true; msg.textContent = '';
+    $('house-body').hidden = false;
+    document.querySelector('.house-tag').textContent = '🔓 House info';
   }
 
-  const refresh = () => rpc('list_items').then(r => { if (!busy) { items = r; loaded = true; render(); } })
-    .catch(() => { if (!loaded) $('shop-count').textContent = "Couldn't load the list — refresh to retry"; });
-
-  async function act(call, optimistic) {
-    busy++; optimistic(); render();
-    try { await call(); } catch { alert("Couldn't save that — check your connection and try again."); }
-    finally { busy--; refresh(); }
+  async function unlock(pass, quiet) {
+    btn.disabled = true;
+    try {
+      const r = await fetch(API, {
+        method: 'POST',
+        headers: { apikey: KEY, Authorization: 'Bearer ' + KEY, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ p_pass: pass })
+      });
+      if (!r.ok) throw new Error(r.status);
+      const d = await r.json();
+      if (d && d.garage_code) { store.set('sd-house-pass', pass); show(d); }
+      else if (!quiet) msg.textContent = 'Wrong password — ask the group chat.';
+    } catch {
+      if (!quiet) msg.textContent = "Couldn't load — check your connection and try again.";
+    } finally { btn.disabled = false; }
   }
 
-  async function add(item, qty) {
-    item = item.trim(); qty = (qty || '').trim();
-    if (!item) return;
-    const n = name();
-    await act(() => rpc('add_item', { p_item: item, p_qty: qty || null, p_name: n || null }),
-      () => { items.push({ id: -Date.now(), item, qty, added_by: n, done: false }); });
-  }
-
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    add(itemIn.value, qtyIn.value);
-    itemIn.value = ''; qtyIn.value = ''; itemIn.focus();
-  });
-  QUICK.forEach(q => {
-    const b = document.createElement('button');
-    b.type = 'button'; b.textContent = '+ ' + q;
-    b.onclick = () => add(q, '');
-    $('shop-quick').append(b);
-  });
-
-  $('shop-copy').addEventListener('click', async () => {
-    const todo = items.filter(i => !i.done);
-    const status = $('shop-copy-status');
-    if (!todo.length) { status.textContent = 'Nothing to order — every item is ticked off.'; return; }
-    const text = 'Add these to my Costco cart on Instacart (delivery to the Airbnb, Thursday Oct 15, 4:30–6 PM):\n' +
-      todo.map(i => `- ${i.item}${i.qty ? ' × ' + i.qty : ''}`).join('\n');
-    let ok = false;
-    try { await navigator.clipboard.writeText(text); ok = true; } catch {
-      const ta = document.createElement('textarea');
-      ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
-      document.body.append(ta); ta.select();
-      try { ok = document.execCommand('copy'); } catch {}
-      ta.remove();
-    }
-    status.textContent = ok ? `Copied ${todo.length} item${todo.length === 1 ? '' : 's'} ✓ — paste into Claude to build the cart.`
-                            : "Couldn't copy automatically — long-press to select the list instead.";
-  });
-
-  showWho(); render(); refresh();
-  setInterval(() => { if (!document.hidden) refresh(); }, 10000);
-  document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
+  form.addEventListener('submit', e => { e.preventDefault(); unlock($('house-pass').value, false); });
+  const saved = store.get('sd-house-pass');
+  if (saved) unlock(saved, true);
 })();
 </script>
 </body>
