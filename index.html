@@ -267,22 +267,15 @@ footer .meta {
 
   <div class="house" id="house">
     <div class="house-head">
-      <span class="house-tag">🔒 House info</span>
+      <span class="house-tag">🔑 House info</span>
       <span class="house-sub">Garage code · Wi-Fi · host contact</span>
     </div>
-    <form class="house-form" id="house-form" autocomplete="off">
-      <input id="house-pass" type="password" placeholder="Crew password" aria-label="Crew password" autocapitalize="off" autocorrect="off" spellcheck="false" required>
-      <button type="submit">Unlock</button>
-    </form>
-    <p class="house-msg" id="house-msg" role="status"></p>
-    <div class="house-body" id="house-body" hidden>
-      <div class="house-row"><span class="k">Garage code</span><span class="v big" id="h-code"></span></div>
-      <p class="house-note" id="h-steps"></p>
-      <div class="house-row"><span class="k">Wi-Fi</span><span class="v" id="h-wifi"></span></div>
-      <div class="house-row"><span class="k">Password</span><span class="v" id="h-wifipw"></span></div>
-      <div class="house-row"><span class="k">Host</span><a class="v" id="h-phone"></a></div>
-      <p class="house-note" id="h-note"></p>
-    </div>
+    <div class="house-row"><span class="k">Garage code</span><span class="v big">9864</span></div>
+    <p class="house-note">MyQ keypad on the right side of the garage. Enter 9864, then press the home button and the garage door opens.</p>
+    <div class="house-row"><span class="k">Wi-Fi</span><span class="v">Taco Tuesday</span></div>
+    <div class="house-row"><span class="k">Password</span><span class="v">carnitas</span></div>
+    <div class="house-row"><span class="k">Host</span><a class="v" href="tel:8585311760">858-531-1760</a></div>
+    <p class="house-note">Any check-in issues: call or text. No answer? Text with the headline "911 Airbnb".</p>
   </div>
 
   <div class="pick" style="border: 1.5px solid var(--ink); box-shadow: 6px 6px 0 var(--ink);">
@@ -674,53 +667,5 @@ footer .meta {
   <p class="tagline"><em>MUSKRAT</em></p>
   <p class="meta">SD · Oct 15–18 · 13 Guys</p>
 </footer>
-
-
-<script>
-(() => {
-  const API = 'https://kzbpqesnugvqqsgxnxfq.supabase.co/rest/v1/rpc/get_house_info';
-  const KEY = 'sb_publishable_RYfmcxx3FCOnMQOKwJrnQg_wD_ToCnY';
-  const store = {
-    get(k) { try { return localStorage.getItem(k); } catch { return null; } },
-    set(k, v) { try { localStorage.setItem(k, v); } catch {} }
-  };
-  const $ = id => document.getElementById(id);
-  const form = $('house-form'), msg = $('house-msg'), btn = form.querySelector('button');
-
-  function show(d) {
-    $('h-code').textContent = d.garage_code;
-    $('h-steps').textContent = d.garage_steps;
-    $('h-wifi').textContent = d.wifi_name;
-    $('h-wifipw').textContent = d.wifi_password;
-    $('h-phone').textContent = d.host_phone;
-    $('h-phone').href = 'tel:' + d.host_phone.replace(/[^0-9+]/g, '');
-    $('h-note').textContent = d.host_note;
-    form.hidden = true; msg.textContent = '';
-    $('house-body').hidden = false;
-    document.querySelector('.house-tag').textContent = '🔓 House info';
-  }
-
-  async function unlock(pass, quiet) {
-    btn.disabled = true;
-    try {
-      const r = await fetch(API, {
-        method: 'POST',
-        headers: { apikey: KEY, Authorization: 'Bearer ' + KEY, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ p_pass: pass })
-      });
-      if (!r.ok) throw new Error(r.status);
-      const d = await r.json();
-      if (d && d.garage_code) { store.set('sd-house-pass', pass); show(d); }
-      else if (!quiet) msg.textContent = 'Wrong password — ask the group chat.';
-    } catch {
-      if (!quiet) msg.textContent = "Couldn't load — check your connection and try again.";
-    } finally { btn.disabled = false; }
-  }
-
-  form.addEventListener('submit', e => { e.preventDefault(); unlock($('house-pass').value, false); });
-  const saved = store.get('sd-house-pass');
-  if (saved) unlock(saved, true);
-})();
-</script>
 </body>
 </html>
